@@ -6,15 +6,16 @@ from lambdatest_playwright_driver import smartui_snapshot
 
 USERNAME = os.getenv("LT_USERNAME", "<USERNAME>")
 ACCESS_KEY = os.getenv("LT_ACCESS_KEY", "<ACCESS_KEY>")
+BROWSER_NAME = os.getenv("BROWSER_NAME", "Chrome")
 GITHUB_URL = os.getenv("GITHUB_URL")
 
 capabilities = {
-    "browserName": "Chrome",
+    "browserName": BROWSER_NAME,
     "browserVersion": "latest",
     "LT:Options": {
         "platform": "Windows 10",
         "build": "Playwright SmartUI Build",
-        "name": "Playwright SmartUI Test",
+        "name": "Playwright SmartUI Test " + BROWSER_NAME,
         "user": USERNAME,
         "accessKey": ACCESS_KEY,
         "network": True,
