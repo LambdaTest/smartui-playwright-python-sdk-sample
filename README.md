@@ -2,13 +2,6 @@
 
 Welcome to the SmartUI SDK sample for Playwright Python. This repository demonstrates how to integrate SmartUI visual regression testing with Playwright Python.
 
-## Prerequisites
-
-- Python 3.7 or higher
-- Node.js (for SmartUI CLI)
-- LambdaTest account credentials (for Cloud tests)
-- Chrome browser (for Local tests)
-
 ## Repository Structure
 
 ```
@@ -20,93 +13,111 @@ smartui-playwright-python-sdk-sample/
 └── smartui-web.json             # SmartUI config (create with npx smartui config:create)
 ```
 
-## Quick Start
+## 1. Prerequisites and Environment Setup
 
-### Local Execution
+### Prerequisites
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/LambdaTest/smartui-playwright-python-sdk-sample
-   cd smartui-playwright-python-sdk-sample
-   ```
+- Python 3.7 or higher
+- Node.js (for SmartUI CLI)
+- LambdaTest account credentials (for Cloud tests)
+- Chrome browser (for Local tests)
 
-2. **Install dependencies** (recommended: use virtual environment):
-   
-   **For Python 3.13+** (if you encounter greenlet errors):
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   npm install @lambdatest/smartui-cli
-   pip install playwright lambdatest-playwright-driver lambdatest-sdk-utils
-   python -m playwright install chromium
-   ```
-   
-   **For Python 3.7-3.12**:
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   npm install @lambdatest/smartui-cli
-   pip install -r requirements.txt
-   python -m playwright install chromium
-   ```
+### Environment Setup
 
-3. **Set your Project Token:**
-   ```bash
-   export PROJECT_TOKEN='your_project_token'
-   ```
+**For Cloud:**
+```bash
+export LT_USERNAME='your_username'
+export LT_ACCESS_KEY='your_access_key'
+export PROJECT_TOKEN='your_project_token'
+```
 
-4. **Create SmartUI config:**
-   ```bash
-   npx smartui config:create smartui-web.json
-   ```
+**For Local:**
+```bash
+export PROJECT_TOKEN='your_project_token'
+```
 
-5. **Run the test** (activate venv first if using one):
-   ```bash
-   source venv/bin/activate  # On Windows: venv\Scripts\activate (if using venv)
-   npx smartui exec python SmartUI_SDK_local.py
-   ```
+## 2. Initial Setup and Dependencies
 
-### Cloud Execution
+### Clone the Repository
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/LambdaTest/smartui-playwright-python-sdk-sample
-   cd smartui-playwright-python-sdk-sample
-   ```
+```bash
+git clone https://github.com/LambdaTest/smartui-playwright-python-sdk-sample
+cd smartui-playwright-python-sdk-sample
+```
 
-2. **Install dependencies** (recommended: use virtual environment):
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   npm install @lambdatest/smartui-cli
-   pip install -r requirements.txt
-   ```
+### Install Dependencies
 
-3. **Set your credentials:**
-   ```bash
-   export LT_USERNAME='your_username'
-   export LT_ACCESS_KEY='your_access_key'
-   export PROJECT_TOKEN='your_project_token'
-   ```
+**Recommended: Use a virtual environment** (recommended to avoid dependency conflicts):
 
-4. **Create SmartUI config:**
-   ```bash
-   npx smartui config:create smartui-web.json
-   ```
+**For Python 3.13+** (if you encounter greenlet errors):
+```bash
+python3 -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+npm install @lambdatest/smartui-cli
+pip install playwright lambdatest-playwright-driver lambdatest-sdk-utils
+python -m playwright install chromium  # Local only
+```
 
-5. **Run the test** (activate venv first if using one):
-   ```bash
-   source venv/bin/activate  # On Windows: venv\Scripts\activate (if using venv)
-   npx smartui exec python SmartUI_SDK_LT_hub.py
-   ```
+**For Python 3.7-3.12**:
+```bash
+python3 -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+npm install @lambdatest/smartui-cli
+pip install -r requirements.txt
+python -m playwright install chromium  # Local only
+```
 
-## Dependencies
-
-The project uses the following key dependencies (configured in `requirements.txt`):
-
+**Dependencies included:**
 - `playwright` - Playwright Python library
 - `lambdatest-playwright-driver` - SmartUI SDK for Playwright Python
 - `lambdatest-sdk-utils` - LambdaTest SDK utilities
+
+### Create SmartUI Configuration
+
+```bash
+npx smartui config:create smartui-web.json
+```
+
+## 3. Steps to Integrate Screenshot Commands into Codebase
+
+The SmartUI screenshot function is already implemented in the repository.
+
+**Cloud Test** (`SmartUI_SDK_LT_hub.py`):
+```python
+from lambdatest_playwright_driver import smartui_snapshot
+
+page.goto("https://www.lambdatest.com")
+smartui_snapshot(page, "screenshot")
+```
+
+**Local Test** (`SmartUI_SDK_local.py`):
+```python
+from lambdatest_playwright_driver import smartui_snapshot
+
+page.goto("https://www.lambdatest.com")
+smartui_snapshot(page, "screenshot")
+```
+
+**Note**: The code is already configured and ready to use. You can modify the URL and screenshot name if needed.
+
+## 4. Execution and Commands
+
+**If using a virtual environment**, activate it first:
+```bash
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+### Local Execution
+
+```bash
+npx smartui exec python SmartUI_SDK_local.py
+```
+
+### Cloud Execution
+
+```bash
+npx smartui exec python SmartUI_SDK_LT_hub.py
+```
 
 ## Test Files
 
