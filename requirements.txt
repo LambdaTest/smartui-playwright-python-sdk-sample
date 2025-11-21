@@ -1,3 +1,6 @@
+# Core SmartUI dependencies
 lambdatest-playwright-driver==1.0.0
 lambdatest-sdk-utils>=1.0.2
-playwright>=1.44.0
+
+# Playwright - install separately if greenlet fails on Python 3.13+
+# playwright>=1.44.0

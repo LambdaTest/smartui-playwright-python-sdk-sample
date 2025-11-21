@@ -31,6 +31,17 @@ smartui-playwright-python-sdk-sample/
    ```
 
 2. **Install dependencies** (recommended: use virtual environment):
+   
+   **For Python 3.13+** (if you encounter greenlet errors):
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   npm install @lambdatest/smartui-cli
+   pip install playwright lambdatest-playwright-driver lambdatest-sdk-utils
+   python -m playwright install chromium
+   ```
+   
+   **For Python 3.7-3.12**:
    ```bash
    python3 -m venv venv
    source venv/bin/activate  # On Windows: venv\Scripts\activate
