@@ -36,7 +36,7 @@ def run(playwright):
     page.goto("https://www.lambdatest.com")
 
     # Add the following command to take a screenshot in SmartUI
-    smartui_snapshot(page, "LT-Home")
+    smartui_snapshot(page, "screenshot")
 
     browser.close()
 

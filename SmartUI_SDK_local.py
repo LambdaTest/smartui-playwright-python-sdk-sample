@@ -9,10 +9,10 @@ def run(playwright):
     try:
         # Navigate to the desired URL
         print("Navigating to URL")
-        page.goto("https://www.pinterest.com/pin/16958936087791895/")
+        page.goto("https://www.lambdatest.com")
 
         # Use smartuiSnapshot to take a visual snapshot locally
-        smartui_snapshot(page, "SS-1")
+        smartui_snapshot(page, "screenshot")
         print("Snapshot taken")
     except Exception as e:
         print("Error:", e)

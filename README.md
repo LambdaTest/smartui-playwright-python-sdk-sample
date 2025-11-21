@@ -1,50 +1,119 @@
-# smartui-playwright-python-sdk
-SmartUI SDK support for Playwright (Python)
+# SmartUI SDK Sample for Playwright Python
 
+Welcome to the SmartUI SDK sample for Playwright Python. This repository demonstrates how to integrate SmartUI visual regression testing with Playwright Python.
 
-This project demonstrates how to use playwright and LambdaTest together to run automated tests on the LambdaTest platform.
+## Prerequisites
 
-## Setup
+- Python 3.7 or higher
+- Node.js (for SmartUI CLI)
+- LambdaTest account credentials (for Cloud tests)
+- Chrome browser (for Local tests)
 
-First, clone this repository to your local machine.
+## Repository Structure
 
-```bash
-git clone https://github.com/LambdaTest/smartui-playwright-python-sdk-sample.git
-cd smartui-playwright-python-sdk-sample
+```
+smartui-playwright-python-sdk-sample/
+├── SmartUI_SDK_LT_hub.py      # Cloud test
+├── SmartUI_SDK_local.py        # Local test
+├── SmartUI_SDK_Ignore.py       # Example with ignore options
+├── requirements.txt             # Python dependencies
+└── smartui-web.json             # SmartUI config (create with npx smartui config:create)
 ```
 
-Next, install the necessary dependencies:
+## Quick Start
 
+### Local Execution
 
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/LambdaTest/smartui-playwright-python-sdk-sample
+   cd smartui-playwright-python-sdk-sample
+   ```
 
-```bash
-npm install @lambdatest/smartui-cli
-pip3 install -r requirements.txt
-```
+2. **Install dependencies:**
+   ```bash
+   npm install @lambdatest/smartui-cli
+   pip3 install -r requirements.txt
+   python3 -m playwright install chromium
+   ```
 
-You'll need to set your LambdaTest username and access key as environment variables. They can be found on your LambdaTest profile.
+3. **Set your Project Token:**
+   ```bash
+   export PROJECT_TOKEN='your_project_token'
+   ```
 
-```bash
-export LT_USERNAME="Your LambdaTest Username"
-export LT_ACCESS_KEY="Your LambdaTest Access Key"
-```
+4. **Create SmartUI config:**
+   ```bash
+   npx smartui config:create smartui-web.json
+   ```
 
+5. **Run the test:**
+   ```bash
+   npx smartui exec python3 SmartUI_SDK_local.py
+   ```
 
-## Running Tests
+### Cloud Execution
 
-To run the test, execute:
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/LambdaTest/smartui-playwright-python-sdk-sample
+   cd smartui-playwright-python-sdk-sample
+   ```
 
-```bash
-npx smartui exec python3 SmartUI_SDK_LT_hub.py 
-```
+2. **Install dependencies:**
+   ```bash
+   npm install @lambdatest/smartui-cli
+   pip3 install -r requirements.txt
+   ```
 
-```bash
-npx smartui exec python3 SmartUI_SDK_Ignore.py 
-```
+3. **Set your credentials:**
+   ```bash
+   export LT_USERNAME='your_username'
+   export LT_ACCESS_KEY='your_access_key'
+   export PROJECT_TOKEN='your_project_token'
+   ```
 
-To run locally, run the following command
+4. **Create SmartUI config:**
+   ```bash
+   npx smartui config:create smartui-web.json
+   ```
 
-```bash
-export PROJECT_TOKEN="123456#1234abcd-****-****-****-************"
-npx smartui exec python3 SmartUI_SDK_local.py 
-```
+5. **Run the test:**
+   ```bash
+   npx smartui exec python3 SmartUI_SDK_LT_hub.py
+   ```
+
+## Dependencies
+
+The project uses the following key dependencies (configured in `requirements.txt`):
+
+- `playwright` - Playwright Python library
+- `lambdatest-playwright-driver` - SmartUI SDK for Playwright Python
+- `lambdatest-sdk-utils` - LambdaTest SDK utilities
+
+## Test Files
+
+### Cloud Test (`SmartUI_SDK_LT_hub.py`)
+
+- Connects to LambdaTest Cloud using CDP (Chrome DevTools Protocol)
+- Reads credentials from environment variables (`LT_USERNAME`, `LT_ACCESS_KEY`)
+- Takes screenshot with name: `screenshot`
+
+### Local Test (`SmartUI_SDK_local.py`)
+
+- Runs Playwright locally using Chromium
+- Requires Chrome browser installed
+- Takes screenshot with name: `screenshot`
+
+### Ignore Example (`SmartUI_SDK_Ignore.py`)
+
+- Demonstrates how to use ignore options in SmartUI snapshots
+- Shows how to exclude specific DOM elements from visual comparison
+
+## View Results
+
+After running the tests, visit your SmartUI project dashboard to view the captured screenshots and compare them with baseline builds.
+
+## More Information
+
+For detailed onboarding instructions, see the [SmartUI Playwright Python Onboarding Guide](https://www.lambdatest.com/support/docs/smartui-onboarding-playwright-python/).
