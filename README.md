@@ -30,11 +30,13 @@ smartui-playwright-python-sdk-sample/
    cd smartui-playwright-python-sdk-sample
    ```
 
-2. **Install dependencies:**
+2. **Install dependencies** (recommended: use virtual environment):
    ```bash
+   python3 -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
    npm install @lambdatest/smartui-cli
-   pip3 install -r requirements.txt
-   python3 -m playwright install chromium
+   pip install -r requirements.txt
+   python -m playwright install chromium
    ```
 
 3. **Set your Project Token:**
@@ -47,9 +49,10 @@ smartui-playwright-python-sdk-sample/
    npx smartui config:create smartui-web.json
    ```
 
-5. **Run the test:**
+5. **Run the test** (activate venv first if using one):
    ```bash
-   npx smartui exec python3 SmartUI_SDK_local.py
+   source venv/bin/activate  # On Windows: venv\Scripts\activate (if using venv)
+   npx smartui exec python SmartUI_SDK_local.py
    ```
 
 ### Cloud Execution
@@ -60,10 +63,12 @@ smartui-playwright-python-sdk-sample/
    cd smartui-playwright-python-sdk-sample
    ```
 
-2. **Install dependencies:**
+2. **Install dependencies** (recommended: use virtual environment):
    ```bash
+   python3 -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
    npm install @lambdatest/smartui-cli
-   pip3 install -r requirements.txt
+   pip install -r requirements.txt
    ```
 
 3. **Set your credentials:**
@@ -78,9 +83,10 @@ smartui-playwright-python-sdk-sample/
    npx smartui config:create smartui-web.json
    ```
 
-5. **Run the test:**
+5. **Run the test** (activate venv first if using one):
    ```bash
-   npx smartui exec python3 SmartUI_SDK_LT_hub.py
+   source venv/bin/activate  # On Windows: venv\Scripts\activate (if using venv)
+   npx smartui exec python SmartUI_SDK_LT_hub.py
    ```
 
 ## Dependencies
