@@ -1,147 +1,115 @@
-# SmartUI SDK Sample for Playwright Python
+# Run SmartUI Visual Tests with Playwright and Python on TestMu AI (Formerly LambdaTest)
 
-Welcome to the SmartUI SDK sample for Playwright Python. This repository demonstrates how to integrate SmartUI visual regression testing with Playwright Python.
+<p align="center">
+  <a href="https://www.testmuai.com/"><img src="https://img.shields.io/badge/MADE%20BY%20TestMu%20AI-000000.svg?style=for-the-badge&labelColor=000" alt="Made by TestMu AI"></a>
+  <a href="https://pypi.org/project/playwright/"><img src="https://img.shields.io/pypi/v/playwright.svg?style=for-the-badge&labelColor=000000" alt="Playwright version"></a>
+  <a href="https://community.testmuai.com/"><img src="https://img.shields.io/badge/Join%20the%20community-blueviolet.svg?style=for-the-badge&labelColor=000000" alt="Community"></a>
+</p>
 
-## Repository Structure
+## Getting Started
 
-```
-smartui-playwright-python-sdk-sample/
-├── SmartUI_SDK_LT_hub.py      # Cloud test
-├── SmartUI_SDK_local.py        # Local test
-├── SmartUI_SDK_Ignore.py       # Example with ignore options
-├── requirements.txt             # Python dependencies
-└── smartui-web.json             # SmartUI config (create with npx smartui config:create)
-```
+[TestMu AI](https://www.testmuai.com/) (Formerly LambdaTest) is the world's first full-stack AI Agentic Quality Engineering platform that empowers teams to test intelligently, smarter, and ship faster. Built for scale, it offers a full-stack testing cloud with 10K+ real devices and 3,000+ browsers. With AI-native test management, MCP servers, and agent-based automation, TestMu AI supports Selenium, Appium, Playwright, and all major frameworks. 
 
-## 1. Prerequisites and Environment Setup
+With TestMu AI (Formerly LambdaTest), you can run SmartUI visual regression tests with Playwright and Python on real browsers. This sample shows how to configure Python + Playwright + SmartUI to run on the TestMu AI cloud.
+
+- [Sign up on TestMu AI](https://www.testmuai.com/register/) (Formerly LambdaTest).
+- Follow the [TestMu AI Documentation](https://www.testmuai.com/support/docs/) for the full setup walkthrough.
 
 ### Prerequisites
 
-- Python 3.7 or higher
-- Node.js (for SmartUI CLI)
-- LambdaTest account credentials (for Cloud tests)
-- Chrome browser (for Local tests)
+- Python 3 and pip (latest stable). Node.js (for SmartUI CLI)
+- A TestMu AI (Formerly LambdaTest) account with your username and access key
 
-### Environment Setup
+### Setup
 
-**For Cloud:**
-```bash
-export LT_USERNAME='your_username'
-export LT_ACCESS_KEY='your_access_key'
-export PROJECT_TOKEN='your_project_token'
-```
-
-**For Local:**
-```bash
-export PROJECT_TOKEN='your_project_token'
-```
-
-## 2. Initial Setup and Dependencies
-
-### Clone the Repository
+Clone and install dependencies:
 
 ```bash
-git clone https://github.com/LambdaTest/smartui-playwright-python-sdk-sample
-cd smartui-playwright-python-sdk-sample
-```
-
-### Install Dependencies
-
-**Recommended: Use a virtual environment** (recommended to avoid dependency conflicts):
-
-**For Python 3.13+** (if you encounter greenlet errors):
-```bash
-python3 -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-npm install @lambdatest/smartui-cli
-pip install playwright lambdatest-playwright-driver lambdatest-sdk-utils
-python -m playwright install chromium  # Local only
-```
-
-**For Python 3.7-3.12**:
-```bash
-python3 -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-npm install @lambdatest/smartui-cli
+git clone https://github.com/LambdaTest/smartui-playwright-python-sdk-sample && cd smartui-playwright-python-sdk-sample
 pip install -r requirements.txt
-python -m playwright install chromium  # Local only
 ```
 
-**Dependencies included:**
-- `playwright` - Playwright Python library
-- `lambdatest-playwright-driver` - SmartUI SDK for Playwright Python
-- `lambdatest-sdk-utils` - LambdaTest SDK utilities
+Set your credentials as environment variables.
 
-### Create SmartUI Configuration
+**macOS / Linux:**
 
 ```bash
-npx smartui config:create smartui-web.json
+export LT_USERNAME="YOUR_USERNAME"
+export LT_ACCESS_KEY="YOUR_ACCESS_KEY"
+export LT_TUNNEL="YOUR_TUNNEL_NAME"
+export PROJECT_TOKEN="YOUR_PROJECT_TOKEN"
 ```
 
-## 3. Steps to Integrate Screenshot Commands into Codebase
+**Windows:**
 
-The SmartUI screenshot function is already implemented in the repository.
+```bash
+set LT_USERNAME="YOUR_USERNAME"
+set LT_ACCESS_KEY="YOUR_ACCESS_KEY"
+set LT_TUNNEL="YOUR_TUNNEL_NAME"
+set PROJECT_TOKEN="YOUR_PROJECT_TOKEN"
+```
 
-**Cloud Test** (`SmartUI_SDK_LT_hub.py`):
+### Run tests
+
+```bash
+pytest
+```
+
+View results on your TestMu AI dashboard.
+
+### Local testing with TestMu AI Tunnel
+
+To test locally hosted apps, set up the TestMu AI tunnel. OS-specific guides:
+
+- [Local Testing on Windows](https://www.testmuai.com/support/docs/local-testing-for-windows/)
+- [Local Testing on macOS](https://www.testmuai.com/support/docs/local-testing-for-macos/)
+- [Local Testing on Linux](https://www.testmuai.com/support/docs/local-testing-for-linux/)
+
+Add the following to your capabilities:
+
 ```python
-from lambdatest_playwright_driver import smartui_snapshot
-
-page.goto("https://www.lambdatest.com")
-smartui_snapshot(page, "screenshot")
+"tunnel": True
 ```
 
-**Local Test** (`SmartUI_SDK_local.py`):
-```python
-from lambdatest_playwright_driver import smartui_snapshot
+## Contributions
 
-page.goto("https://www.lambdatest.com")
-smartui_snapshot(page, "screenshot")
-```
+Contributions are welcome. Open an issue to discuss your idea before submitting a pull request. When reporting bugs, include your Python version, OS, and Playwright version.
 
-**Note**: The code is already configured and ready to use. You can modify the URL and screenshot name if needed.
+## TestMu AI (Formerly LambdaTest) Community
 
-## 4. Execution and Commands
+Connect with testers and developers in the [TestMu AI Community](https://community.testmuai.com/). Ask questions, share what you are building, and discuss best practices in test automation and DevOps.
+  
+## TestMu AI (Formerly LambdaTest) Certifications
 
-**If using a virtual environment**, activate it first:
-```bash
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
+Earn free [TestMu AI Certifications](https://www.testmuai.com/certifications/) for testers, developers, and QA engineers. Validate your skills in Selenium, Cypress, Playwright, Appium, Espresso and more. Industry-recognized, shareable on LinkedIn, and built by practitioners, not marketers.
 
-### Local Execution
+## Learning Resources by TestMu AI (Formerly LambdaTest)
 
-```bash
-npx smartui exec python SmartUI_SDK_local.py
-```
+Learn modern testing through tutorials, guides, videos, and weekly updates:
 
-### Cloud Execution
+* [TestMu AI Blog](https://www.testmuai.com/blog/)
+* [TestMu AI Learning Hub](https://www.testmuai.com/learning-hub/)
+* [TestMu AI on YouTube](https://www.youtube.com/@TestMuAI)
+* [TestMu AI Newsletter](https://www.testmuai.com/newsletter/)
+  
+## LambdaTest is Now TestMu AI
 
-```bash
-npx smartui exec python SmartUI_SDK_LT_hub.py
-```
+On **January 12, 2026**, [LambdaTest evolved to TestMu AI](https://www.testmuai.com/lambdatest-is-now-testmuai/), the world's first fully autonomous **Agentic AI Quality Engineering Platform**.
 
-## Test Files
+Same team. Same infrastructure. Same customer accounts. All existing LambdaTest logins, scripts, capabilities, and integrations continue to work without change.
 
-### Cloud Test (`SmartUI_SDK_LT_hub.py`)
+ð Find the new home for [LambdaTest](https://www.testmuai.com).
 
-- Connects to LambdaTest Cloud using CDP (Chrome DevTools Protocol)
-- Reads credentials from environment variables (`LT_USERNAME`, `LT_ACCESS_KEY`)
-- Takes screenshot with name: `screenshot`
+### How LambdaTest Evolved into TestMu AI
 
-### Local Test (`SmartUI_SDK_local.py`)
+In 2017, we launched LambdaTest with a simple mission: make testing fast, reliable, and accessible. As LambdaTest grew, we expanded into Test Intelligence, Visual Regression Testing, Accessibility Testing, API Testing, and Performance Testing, covering the full depth of the testing lifecycle.
 
-- Runs Playwright locally using Chromium
-- Requires Chrome browser installed
-- Takes screenshot with name: `screenshot`
+As software development entered the AI era, testing had to evolve, too. We rebuilt the architecture to be AI-native from the ground up, with autonomous agents that **plan, author, execute, analyze, and optimize tests** while keeping humans in the loop. The platform integrates with your repos, CI, IDEs, and terminals, continuously learning from every code change and development signal.
 
-### Ignore Example (`SmartUI_SDK_Ignore.py`)
+That evolution earned a new name: **TestMu AI**, built for an AI-first future of quality engineering. TestMu is not a new name for us. It is the name of our annual community conference, which has brought together 100,000+ quality engineers to discuss how AI would reshape testing, long before that became an industry norm. 
 
-- Demonstrates how to use ignore options in SmartUI snapshots
-- Shows how to exclude specific DOM elements from visual comparison
+What started as a high-performance cloud testing platform has transformed into an AI-native, multi-agent system powering a connected, end-to-end quality layer. That evolution defined a new identity: LambdaTest evolved into TestMu AI, built for an AI-first future of quality engineering.
 
-## View Results
+## Support
 
-After running the tests, visit your SmartUI project dashboard to view the captured screenshots and compare them with baseline builds.
-
-## More Information
-
-For detailed onboarding instructions, see the [SmartUI Playwright Python Onboarding Guide](https://www.lambdatest.com/support/docs/smartui-onboarding-playwright-python/).
+Got a question? Email [support@testmuai.com](mailto:support@testmuai.com) or chat with us 24x7 from our chat portal.
